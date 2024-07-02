@@ -1,0 +1,132 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: 0;
+    transition: all 0.5s ease;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom right, rgba(79, 51, 176, 1), rgba(210, 60, 3, 1));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 350px;
+    padding: 20px;
+}
+
+.calculator {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    position: relative;
+}
+
+.dark .calculator {
+    background-color: #333;
+    color: #fff;
+}
+
+.theme-toggler {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #333;
+    cursor: pointer;
+}
+
+.calculator.dark .theme-toggler {
+    background-color: #fff;
+}
+
+#display {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    font-size: 1.5em;
+    height: 60px;
+    padding: 15px;
+    text-align: right;
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+
+#display::-webkit-scrollbar {
+    display: none;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 10px;
+}
+
+button {
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    padding: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #d0d0d0;
+    transform: scale(1.05);
+}
+
+button#equal {
+    background-color: #00c897;
+    color: #fff;
+    grid-row: span 2;
+}
+
+button#clear {
+    background-color: #ff6567;
+    color: #fff;
+}
+
+button.btn-operator {
+    background-color: #ffd0fd;
+    color: #ff6567;
+}
+
+button.btn-number {
+    background-color: #c3eaff;
+    color: #000;
+}
+
+.dark button#clear {
+    background-color: #ff6567;
+    color: #fff;
+}
+
+.dark button.btn-number {
+    background-color: #4b4b4b;
+    color: #fff;
+}
+
+.dark button.btn-operator {
+    background-color: #ff6567;
+    color: #fff;
+}
+
+.dark button#equal {
+    background-color: #00c897;
+    color: #fff;
+}
+body {
+    background-image: url("2.avif") ;
+    background-size: cover;
+}
