@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
     themeToggler.addEventListener('click', () => {
         if (currentTheme === 'dark') {
             calculator.classList.remove('dark');
-            calculator.style.backgroundColor = '#fff'; // Change background color to light
+            calculator.style.backgroundColor = '#fff'; 
             currentTheme = 'light';
         } else {
             calculator.classList.add('dark');
-            calculator.style.backgroundColor = '#333'; // Change background color to dark
+            calculator.style.backgroundColor = '#333'; 
             currentTheme = 'dark';
         }
     });
@@ -39,13 +39,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function evaluateExpression(expression) {
-        // Replace ÷ with / and × with *
+        
         let sanitizedExpression = expression.replace(/÷/g, '/');
         sanitizedExpression = sanitizedExpression.replace(/×/g, '*');
         
-        // Use try-catch to handle potential evaluation errors
+        
         try {
-            // Use Function constructor to evaluate the expression safely
+            
             return Function(`'use strict'; return (${sanitizedExpression})`)();
         } catch (error) {
             throw Error('Invalid expression');
