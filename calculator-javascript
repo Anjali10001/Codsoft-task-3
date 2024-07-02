@@ -1,0 +1,54 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const calculator = document.querySelector('.calculator');
+    const display = document.querySelector('#display');
+    const buttons = document.querySelectorAll('button');
+    const themeToggler = document.querySelector('.theme-toggler');
+    let currentTheme = 'dark';
+
+    themeToggler.addEventListener('click', () => {
+        if (currentTheme === 'dark') {
+            calculator.classList.remove('dark');
+            calculator.style.backgroundColor = '#fff'; // Change background color to light
+            currentTheme = 'light';
+        } else {
+            calculator.classList.add('dark');
+            calculator.style.backgroundColor = '#333'; // Change background color to dark
+            currentTheme = 'dark';
+        }
+    });
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const value = button.textContent;
+
+            if (button.id === 'clear') {
+                display.textContent = '';
+            } else if (button.id === 'backspace') {
+                display.textContent = display.textContent.slice(0, -1);
+            } else if (button.id === 'equal') {
+                try {
+                    const result = evaluateExpression(display.textContent);
+                    display.textContent = result;
+                } catch (error) {
+                    display.textContent = 'Error';
+                }
+            } else {
+                display.textContent += value;
+            }
+        });
+    });
+
+    function evaluateExpression(expression) {
+        // Replace ÷ with / and × with *
+        let sanitizedExpression = expression.replace(/÷/g, '/');
+        sanitizedExpression = sanitizedExpression.replace(/×/g, '*');
+        
+        // Use try-catch to handle potential evaluation errors
+        try {
+            // Use Function constructor to evaluate the expression safely
+            return Function(`'use strict'; return (${sanitizedExpression})`)();
+        } catch (error) {
+            throw Error('Invalid expression');
+        }
+    }
+});
